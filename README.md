@@ -77,3 +77,10 @@ imports: [
     }),
     UsersModule, ReportsModule],
 ```
+
+### Email Intigration
+
+- `npm i --save @nestjs-modules/mailer nodemailer`
+- `npm i --save-dev @types/nodemailer`
+- `npm i --save ejs`
+- config `npm i --save @nestjs/config`
