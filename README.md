@@ -58,16 +58,22 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Description
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- For creating car value app for evry car user
 
-## Stay in touch
+## Database Connection
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- For install Database `npm i @nestjs/typeorm typeorm sqlite3`
+- connect that with app module
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+```
+imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.sqlite',
+      entities:[],
+      synchronize:true
+    }),
+    UsersModule, ReportsModule],
+```
