@@ -8,6 +8,7 @@ import { User } from './users/user.entity';
 import { ConfigModule } from '@nestjs/config';
 import { MailModule } from './mail/mail.module';
 import { AuthModule } from './auth/auth.module';
+import { Report } from './reports/report.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities:[User],
+      entities:[User, Report],
       synchronize:true
     }),
     UsersModule, ReportsModule, MailModule, AuthModule],
