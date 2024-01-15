@@ -2,7 +2,11 @@ import { NestInterceptor, CallHandler, ExecutionContext, UseInterceptors } from 
 import { plainToClass } from "class-transformer";
 import { Observable, map } from "rxjs";
 
-export function Serialize(dto: any){
+interface ClassConstructor {
+  new (...args: any[]): {}
+}
+
+export function Serialize(dto: ClassConstructor){
   return UseInterceptors(new SerializeInterceptor(dto));
 }
 
