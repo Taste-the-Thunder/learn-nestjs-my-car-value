@@ -2,10 +2,11 @@ import { Body, ClassSerializerInterceptor, Controller, Delete, Get, NotFoundExce
 import { CreateUserDto } from './dtos/createuser.dto';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dtos/updateUser.dto';
-import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
 
 @Controller('users')
+@Serialize(UserDto)
 export class UsersController {
 
   constructor(private usersService: UsersService){}
@@ -15,7 +16,6 @@ export class UsersController {
     this.usersService.create(body.email, body.password)
   }
 
-  @UseInterceptors(new SerializeInterceptor(UserDto))
   @Get('/:id')
   async findUser(@Param('id') id: string){
     console.log('handler is running');
