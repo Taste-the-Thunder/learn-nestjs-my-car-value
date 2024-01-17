@@ -6,10 +6,10 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  // constructor(private readonly authService: AuthService) {}
 
-  @Post()
-  signUp(@Body() userDto: User): Promise<void> {
-    return this.authService.signUp(userDto);
-  }
+  // @Post()
+  // signUp(@Body() userDto: User): Promise<void> {
+  //   return this.authService.signUp(userDto.email, userDto.password);
+  // }
 }

@@ -14,10 +14,11 @@ export class AuthService {
     private emailService: MailService, 
     private usersService: UsersService) {}
 
-  async signup(email: string, password: string){
+  async signUp(email: string, password: string){
     // see if email is in use
     const users = this.usersService.find(email);
-    if(users){
+    
+    if((await users).length){
       throw new BadRequestException('email in use');
     }
 
@@ -26,6 +27,7 @@ export class AuthService {
     const salt = randomBytes(8).toString('hex');
 
     // Has the salt and the password together
+    const scrypt = promisify<string, string, number, Buffer>(_scrypt);
     const hash = (await scrypt(password, salt, 32)) as Buffer;
 
     //join the hashed result and the salt togather
